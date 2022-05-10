@@ -14,7 +14,10 @@ const modals = () => {
         modal.style.display = 'block';
         document.body.style.overflow = 'hidden';
 
-        clearInterval(checkOpen);
+        if (checkOpen) {
+          clearInterval(checkOpen);
+        }
+
       });
     });
 
@@ -47,7 +50,7 @@ const modals = () => {
 
   bindModal('.popup_engineer_btn', '.popup_engineer', '.popup_engineer .popup_close');
   bindModal('.phone_link', '.popup', '.popup .popup_close');
-  checkOpen = showModalByTime('.popup', 7000);
+  checkOpen = showModalByTime('.popup', 60000);
   
 };
 
