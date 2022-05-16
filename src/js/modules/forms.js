@@ -3,6 +3,7 @@ import checkNumInputs from "./checkNumInputs";
 const forms = (state) => {
   const form = document.querySelectorAll('form');
   const inputs = document.querySelectorAll('input');
+  const windows = document.querySelectorAll('[data-modal]');
 
   checkNumInputs('input[name="user_phone"]');
 
@@ -53,7 +54,15 @@ const forms = (state) => {
           clearInputs();
           setTimeout(() => {
             statusMessage.remove();
-          }, 3000);
+            windows.forEach(item => {
+              item.style.display = 'none';
+            });
+            document.body.style.overflow = '';
+            for (let key in state) {
+              delete state[key];
+            }
+            console.log(state);
+          }, 2000);
         });
     });
   });
